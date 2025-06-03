@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta charset="UTF-8">
   <title>Bee-collector</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
@@ -27,6 +28,12 @@
 </head>
 <body>
   <canvas id="game" width="1000" height="650"></canvas>
+
+  <div style="text-align:center; margin-top:10px;">
+  <button id="upBtn">Up</button>
+  <button id="downBtn">Down</button>
+</div>
+
   <script>
    const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
@@ -189,7 +196,13 @@ function checkAllImagesLoaded() {
 
 beeImage.onload = checkAllImagesLoaded;
 flowerImage.onload = checkAllImagesLoaded;
+ document.getElementById('upBtn').addEventListener('click', () => {
+    bee.y = Math.max(bee.y - 40, bee.minY);
+  });
 
-  </script>
+  document.getElementById('downBtn').addEventListener('click', () => {
+    bee.y = Math.min(bee.y + 40, bee.maxY);
+  });
+</script>
 </body>
 </html>
